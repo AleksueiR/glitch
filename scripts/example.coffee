@@ -10,8 +10,19 @@
 
 module.exports = (robot) ->
 
-  # robot.hear /badger/i, (res) ->
-  #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+  robot.send { room: 'AleksueiR/CyberTests' }, 'robot.send!'
+
+  robot.hear /badger/i, (res) ->
+    #console.log(robot)
+
+    #a = @robot.adapter.gitterClient()
+    #a.asyncJoinRoom 'AleksueiR/CyberTests', (d) ->
+    #  console.log 'a', d
+
+    res.send { room: 'AleksueiR/CyberTests' }, 'robot.send'
+    res.robot.adapter.send { room: 'AleksueiR/CyberTests' }, 'adapter.send'
+    #res.send { room: 'https://gitter.im/AleksueiR/CyberTests' }, 'test'
+    res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
@@ -48,10 +59,10 @@ module.exports = (robot) ->
   #     return
   #   res.send "#{answer}, but what is the question?"
   #
-  # robot.respond /you are a little slow/, (res) ->
-  #   setTimeout () ->
-  #     res.send "Who you calling 'slow'?"
-  #   , 60 * 1000
+  robot.respond /you are a little slow/, (res) ->
+    setTimeout () ->
+      res.send "Who you calling 'slow'?"
+    , 60 * 1000
   #
   # annoyIntervalId = null
   #
